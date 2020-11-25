@@ -1,0 +1,17 @@
+flow:
+
+1. Grab list of current games.
+2. Compare that to previous list of games (starts as [])
+3. Compute created, deleted, modified.
+4. Check modified against existing in-memory cache of games -> discord messages and update each message.
+5. Check deleted against that cache and delete those messages and cache entries.
+6. Create a new discord message per new game per subscription
+
+schemas:
+
+Subscriptions - All current subscriptions, including an autoincrement ID
+Games - All current games, including an autoincrement ID
+Message - Message ID + foreign keys for subscription and games ID
+
+Deleting a subscription will automatically delete all messages
+Deleting a game will automatically delete all messages.
